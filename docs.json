@@ -34,6 +34,21 @@
             ]
           },
           {
+            "group": "Build with UI",
+            "pages": [
+              "build-with-ui/workflows",
+              "build-with-ui/cors",
+              "build-with-ui/database",
+              "build-with-ui/logs",
+              "build-with-ui/nodes",
+              "build-with-ui/rate-limiter",
+              "build-with-ui/realtime-execution",
+              "build-with-ui/schema-canvas",
+              "build-with-ui/secrets",
+              "build-with-ui/api-docs"
+            ]
+          },
+          {
             "group": "Nodes",
             "pages": [
               "nodes/api-start",
