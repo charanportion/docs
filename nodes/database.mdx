@@ -1,3 +1,154 @@
 ---
-title: "Database"
+title: "Database Node"
+description: "Perform CRUD operations using DotPortion’s built-in managed database inside workflows."
+keywords: ["DotPortion Database Node","managed database","inhouse MongoDB","no-code backend database"]
 ---
+
+# Database Node
+
+The **Database Node** allows you to **store, query, update, and delete data** using **DotPortion’s in-house managed database**.
+
+This node provides the same workflow-driven database experience as the MongoDB Node, but **without requiring any external database setup**.
+
+DotPortion automatically handles:
+
+- Database provisioning
+- Connection management
+- Security and scaling
+
+---
+
+## Before You Start
+
+No external configuration is required.
+
+The Database Node uses **DotPortion’s built-in MongoDB-based platform database**, which is automatically available for every project.
+
+You can start using it immediately.
+
+---
+
+## What the Database Node Does
+
+The Database Node is responsible for:
+
+- Performing CRUD operations on in-house collections
+- Managing data persistence per project
+- Mapping workflow data to database fields
+- Returning query results to the workflow
+
+It behaves similarly to the MongoDB Node but is **fully managed by DotPortion**.
+
+---
+
+![Database](/images/nodes/database.png)
+
+## Configuration Fields
+
+### Select Collection
+
+Choose the collection you want to operate on.
+
+Collections are scoped to your project.
+
+You can manage collections using **Manage Collections**.
+
+---
+
+### Operation
+
+Select the database operation to perform.
+
+Supported operations include:
+
+- Insert One
+- Find One
+- Find Many
+- Update One
+- Delete One
+
+---
+
+### Available Fields
+
+Displays the schema fields for the selected collection, including:
+
+- Field name
+- Data type
+- Required fields
+
+This helps ensure correct data mapping and prevents invalid writes.
+
+---
+
+### Query Fields
+
+Query Fields define **how records are matched**.
+
+Used for:
+
+- Finding records
+- Updating specific documents
+- Deleting records
+
+Example:
+
+```typescript
+_id = ObjectId value
+```
+
+### Data Fields
+
+Data Fields define **what data is written or updated**.
+
+Dynamic values from previous nodes can be inserted using `{{ }}`.
+
+Example:
+
+```typescript
+{{requestparameters.title}}
+```
+
+---
+
+## Example: Insert a Todo
+
+### Configuration
+
+**Collection:** `Todo`\
+**Operation:** `Insert One`
+
+**Data Fields**
+
+- `title` → `{{requestparameters.title}}`
+- `description` → `{{requestparameters.description}}`
+- `isCompleted` → `{{requestparameters.isCompleted}}`
+
+---
+
+## Output
+
+The Database Node outputs the result of the operation.
+
+Example output:
+
+```typescript
+{
+  "insertedId": "65a12bc9e4..."
+}
+```
+
+This output is available to downstream nodes such as:
+
+- Logic Node
+- Loop Node
+- API Response Node
+
+---
+
+## Execution Rules
+
+- No external database configuration required
+- Required fields must be provided
+- Query conditions must match schema
+- Errors stop workflow execution

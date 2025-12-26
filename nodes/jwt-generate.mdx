@@ -1,3 +1,135 @@
 ---
-title: "Jwt Generate"
+title: "JWT Generate Node"
+description: "Generate JSON Web Tokens (JWT) securely inside a DotPortion workflow."
+keywords: ["DotPortion JWT Generate","JWT authentication","token generation","no-code auth"]
 ---
+
+# JWT Generate Node
+
+The **JWT Generate Node** is used to **create JSON Web Tokens (JWT)** inside a DotPortion workflow.
+
+It enables authentication and authorization flows such as:
+
+- User login
+- Session management
+- Secured APIs
+- Token-based access control
+
+This node generates a signed JWT that can be returned to the client or used internally.
+
+---
+
+## What the JWT Generate Node Does
+
+The JWT Generate Node is responsible for:
+
+- Creating a signed JWT token
+- Embedding custom payload data
+- Applying token expiration
+- Using a secure secret for signing
+
+It works similarly to `jsonwebtoken.sign()` in traditional backend systems.
+
+---
+
+![Jwt Generate](/images/nodes/jwt-generate.png)
+
+## Configuration Fields
+
+### Payload
+
+The **Payload** defines the data embedded inside the JWT.
+
+It must be a valid JSON object.
+
+You can:
+
+- Write static JSON
+- Insert dynamic values using `{{ }}`
+
+#### Example
+
+```json
+{
+  "userId": "{{user.id}}",
+  "role": "{{user.role}}"
+}
+```
+
+This data becomes part of the JWT claims.
+
+---
+
+### Secret
+
+The **Secret** defines which secret key is used to sign the token.
+
+Currently supported option:
+
+- **JWT** – Uses the platform-managed JWT secret
+
+> 🔐 DotPortion securely manages this secret for you.\
+> No manual key handling is required.
+
+---
+
+### Expires In
+
+The **Expires In** field defines how long the token remains valid.
+
+This follows standard JWT expiration formats.
+
+#### Examples
+
+| Value | Meaning    |
+| :---- | :--------- |
+| `10m` | 10 minutes |
+| `1h`  | 1 hour     |
+| `7d`  | 7 days     |
+
+---
+
+## Output
+
+The JWT Generate Node outputs the generated token.
+
+Example output:
+
+```typescript
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
+
+This token can be:
+
+- Returned using the API Response Node
+- Used in downstream logic
+- Stored in a database
+
+---
+
+## Example: Generate Login Token
+
+### Configuration
+
+**Payload**
+
+```typescript
+{
+  "userId": "{{user.id}}",
+  "email": "{{user.email}}"
+}
+```
+
+**Secret**
+
+```typescript
+JWT
+```
+
+**Expires In**
+
+```typescript
+1h
+```

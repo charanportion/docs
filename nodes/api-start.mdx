@@ -1,0 +1,80 @@
+---
+title: "API Start Node"
+description: "Define how an incoming HTTP request enters and triggers a workflow in DotPortion."
+keywords: ["DotPortion API Start","API entry point","no-code backend routing","workflow trigger"]
+---
+
+# API Start Node
+
+The **API Start Node** is the **entry point** of every workflow in DotPortion.
+
+It defines **how an external HTTP request triggers your workflow**, similar to how routes work in traditional backend frameworks like Express, FastAPI, or Rails.
+
+Every workflow must start with **exactly one API Start Node**.
+
+---
+
+## What the API Start Node Does
+
+The API Start Node is responsible for:
+
+- Defining the **HTTP method** your API accepts
+- Defining the **URL path** for the endpoint
+- Receiving incoming request data:
+  - Request body
+  - Query parameters
+  - Path parameters
+  - Headers
+- Triggering workflow execution
+
+Once a request matches the configured **method + path**, DotPortion begins executing the connected nodes **from top to bottom**.
+
+---
+
+![Api Start](/images/nodes/api-start.png)
+
+## Configuration Fields
+
+### Method
+
+The **HTTP method** defines how clients interact with your API.
+
+Supported methods:
+
+- `GET`
+- `POST`
+- `PUT`
+- `PATCH`
+- `DELETE`
+
+Choose the method based on what your API does.
+
+**Common usage patterns:**
+
+| Method | Use case              |
+| ------ | --------------------- |
+| GET    | Fetch data            |
+| POST   | Create new data       |
+| PUT    | Replace existing data |
+| PATCH  | Update partial data   |
+| DELETE | Remove data           |
+
+---
+
+### Path
+
+The **Path** defines the URL route where this API is exposed.
+
+This is the **unique identifier** of your endpoint within the project.
+
+#### Example
+
+```text
+POST /create
+```
+
+When deployed, the full API URL becomes:
+
+```
+https://api.dotportion.com/api/{tenant-name}/{project-id}/create
+```

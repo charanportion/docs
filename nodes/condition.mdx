@@ -1,3 +1,129 @@
 ---
-title: "Condition"
+title: "Condition Node"
+description: "Control workflow execution using JavaScript-based conditional logic in DotPortion."
+keywords: ["DotPortion Condition Node","workflow branching","conditional logic","no-code backend conditions"]
 ---
+
+# Condition Node
+
+The **Condition Node** allows you to control **whether a workflow continues execution** based on a condition written as a **JavaScript expression**.
+
+It enables **branching logic** similar to `if` statements in traditional programming.
+
+---
+
+## What the Condition Node Does
+
+The Condition Node is responsible for:
+
+- Evaluating a JavaScript expression
+- Deciding whether the workflow should continue
+- Enabling conditional execution paths
+
+If the condition evaluates to **true**, execution continues to the next connected node.\
+If it evaluates to **false**, the workflow stops or follows an alternate path (if configured).
+
+---
+
+![Condition](/images/nodes/condition.png)
+
+## Configuration
+
+### Condition
+
+The **Condition** field accepts a **JavaScript expression** that must evaluate to either `true` or `false`.
+
+You can reference data from previous nodes using **dynamic values**.
+
+> Tip: Type `{{` to insert values from earlier nodes.
+
+---
+
+## Writing Conditions
+
+Conditions are written as **pure JavaScript expressions**.
+
+### Examples
+
+#### Check a boolean value
+
+```js
+{{parameters.isCompleted}} === true
+```
+
+#### Check if a value exists
+
+```javascript
+{{parameters.title}} != null
+```
+
+#### Compare numbers
+
+```javascript
+{{order.total}} > 1000
+```
+
+#### String comparison
+
+```javascript
+{{user.role}} === "admin"
+```
+
+---
+
+## Using Dynamic Values
+
+Dynamic values come from:
+
+- Request Parameters Node
+- Logic Node
+- Database Node
+- JWT Node
+
+They are injected using the `{{ }}` syntax.
+
+Example:
+
+```javascript
+{{params.userId}} !== undefined
+```
+
+---
+
+## Execution Behavior
+
+- Condition is evaluated at runtime
+- Expression must return `true` or `false`
+- If `true` → workflow continues
+- If `false` → workflow stops or exits the current branch
+
+---
+
+## Common Use Cases
+
+- Input validation
+- Role-based access control
+- Conditional database writes
+- Feature flags
+- Guard clauses (fail fast)
+
+---
+
+## Example: Validate Required Input
+
+```javascript
+{{parameters.title}} && {{parameters.description}}
+```
+
+Only continues execution if both values are present.
+
+---
+
+## Error Handling
+
+If the condition:
+
+- Throws an error
+- Returns a non-boolean value
+
+The workflow fails and an error response is returned.

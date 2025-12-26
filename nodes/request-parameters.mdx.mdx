@@ -1,3 +1,149 @@
 ---
-title: "Request Response"
+title: "Request Parameters Node"
+description: "Extract, validate, and normalize incoming request data in a DotPortion workflow."
+keywords: ["DotPortion Request Parameters","request validation","API input handling","no-code backend parameters"]
 ---
+
+# Request Parameters Node
+
+The **Request Parameters Node** is used to **extract, validate, and structure input data** from an incoming API request.
+
+It allows you to explicitly define **what data your API expects** and **where it should be read from**, making workflows predictable, secure, and easy to debug.
+
+This node typically comes **immediately after the API Start Node**.
+
+---
+
+## What the Request Parameters Node Does
+
+The Request Parameters Node is responsible for:
+
+- Extracting values from the incoming request
+- Supporting multiple input sources (body, query, headers, path params)
+- Validating required parameters
+- Normalizing request data for downstream nodes
+
+Once configured, all extracted parameters are available in a **clean, structured format** to the rest of the workflow.
+
+---
+
+![Request Parameters](/images/nodes/request-parameters.png)
+
+## Parameter Sources
+
+A **Parameter Source** defines **where parameters should be extracted from**.
+
+You can add **multiple sources** in a single node.
+
+### Supported Source Types
+
+| Source Type | Description                              |
+| ----------- | ---------------------------------------- |
+| Body        | Extract values from request body         |
+| Query       | Extract values from URL query parameters |
+| Headers     | Extract values from HTTP headers         |
+| Params      | Extract values from path parameters      |
+
+---
+
+## Configuring a Parameter Source
+
+Each source consists of:
+
+1. **Source Type**\
+   Where to extract parameters from (Body, Query, Headers, Params)
+2. **Parameters**\
+   A list of expected parameter names
+3. **Required Flag**\
+   Whether the parameter is mandatory
+
+---
+
+## Example: Extracting Body Parameters
+
+### Configuration
+
+**Source Type:** `Body`
+
+**Parameters:**
+
+- `title` (required)
+- `description` (required)
+- `isCompleted` (required)
+
+This configuration expects the following request body:
+
+```json
+{
+  "title": "Task title",
+  "description": "Task description",
+  "isCompleted": false
+}
+```
+
+## Multiple Parameter Sources
+
+You can extract parameters from **multiple sources** in the same node.
+
+### Example
+
+**Source 1**
+
+- Type: `Body`
+- Parameters: `title`, `description`
+
+**Source 2**
+
+- Type: `Query`
+- Parameters: `userId`
+
+This allows APIs like:
+
+```
+POST /tasks?userId=123
+```
+
+```
+{
+  "title": "Learn DotPortion",
+  "description": "Finish documentation"
+}
+```
+
+---
+
+## Required vs Optional Parameters
+
+- ✅ **Required** parameters must be present
+- ❌ **Optional** parameters may be missing
+
+If a required parameter is missing:
+
+- Workflow execution stops
+- An error response is returned automatically
+
+This prevents invalid data from reaching logic or database nodes.
+
+---
+
+## Output Data
+
+After execution, the Request Parameters Node outputs a **structured object** containing all extracted parameters.
+
+Example output:
+
+```
+{
+  "title": "Learn DotPortion",
+  "description": "Finish documentation",
+  "isCompleted": false,
+  "userId": "123"
+}
+```
+
+This output is available to:
+
+- Logic Node
+- Database Node
+- API Response Node
+- JWT Node

@@ -1,3 +1,104 @@
 ---
-title: "Response"
+title: "API Response Node"
+description: "Define and send the final HTTP response for a workflow in DotPortion."
+keywords: ["DotPortion API Response","API response node","HTTP status codes","no-code backend response"]
 ---
+
+# API Response Node
+
+The **API Response Node** is responsible for sending the **final HTTP response** back to the client.
+
+It marks the **end of workflow execution**.\
+Once this node runs, no further nodes are executed.
+
+Every workflow that exposes an API **must end with exactly one API Response Node**.
+
+---
+
+## What the API Response Node Does
+
+The API Response Node is responsible for:
+
+- Defining the **HTTP status code**
+- Sending the final response to the client
+- Ending workflow execution
+
+It acts like a `res.send()` or `return Response()` in traditional backend frameworks.
+
+---
+
+![Response](/images/nodes/response.png)
+
+## Configuration Fields
+
+### Status
+
+The **Status** field defines the HTTP status code returned to the client.
+
+You can select from standard HTTP response codes.
+
+#### Common Status Codes
+
+| Status Code               | Meaning                       |
+| ------------------------- | ----------------------------- |
+| 200 OK                    | Request successful            |
+| 201 Created               | Resource created              |
+| 204 No Content            | Success with no response body |
+| 400 Bad Request           | Client-side error             |
+| 401 Unauthorized          | Authentication required       |
+| 403 Forbidden             | Access denied                 |
+| 404 Not Found             | Resource not found            |
+| 500 Internal Server Error | Server error                  |
+
+---
+
+## How Response Data Works
+
+The API Response Node sends the **final output** of the workflow.
+
+The response body is typically constructed using:
+
+- Data from previous nodes
+- Logic or transformations
+- Database query results
+
+Once this node executes:
+
+- The response is returned to the client
+- Workflow execution stops immediately
+
+---
+
+## Example: Success Response
+
+### Configuration
+
+```text
+Status: 200 OK
+```
+
+### Response Body
+
+```
+{
+  "success": true,
+  "message": "User created successfully"
+}
+```
+
+## Example: Error Response
+
+### Configuration
+
+```
+Status: 400 Bad Request
+```
+
+### Response Body
+
+```
+{
+  "success": false,
+  "error": "Invalid input data"
+}
+```
