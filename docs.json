@@ -10,17 +10,27 @@
   "favicon": "/favicon.svg",
   "navigation": {
     "global": {
+      "tabs": [
+        {
+          "tab": "Examples",
+          "href": ""
+        }
+      ],
       "anchors": [
         {
-          "anchor": "Blog",
+          "anchor": "Discord",
           "icon": "newspaper",
-          "href": "https://mintlify.com/blog"
+          "color": {
+            "light": "#000000",
+            "dark": "#000000"
+          },
+          "href": "https://discord.gg/Ewp2uPG534"
         }
       ]
     },
-    "dropdowns": [
+    "tabs": [
       {
-        "dropdown": "Guides",
+        "tab": "Documentation",
         "menu": [
           {
             "item": "Getting started",
