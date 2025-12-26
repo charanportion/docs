@@ -16,7 +16,7 @@
           "icon": "newspaper",
           "color": {
             "light": "#000000",
-            "dark": "#000000"
+            "dark": "#07C983"
           },
           "href": "https://discord.gg/Ewp2uPG534"
         }
@@ -40,8 +40,18 @@
         "menu": [
           {
             "item": "Todo",
-            "pages": [
-              "examples/todo/create-todo"
+             "groups": [
+              {
+                "group": "Todo",
+                "icon": "square-terminal",
+                "pages": [
+                 "examples/Todo/create-todo",
+              "examples/Todo/get-todo",
+              "examples/Todo/get-todos",
+              "examples/Todo/update-todo",
+              "examples/Todo/delete-todo"
+                ]
+              }
             ]
           }
         ]
