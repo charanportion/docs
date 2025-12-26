@@ -1,229 +1,107 @@
-# Welcome to DotPortion
+---
+title: "Introduction"
+description: "Build and deploy backend APIs visually using DotPortion’s no-code workflow engine."
+keywords: ["DotPortion","no-code API builder","backend workflows","visual backend","SaaS API platform"]
+sidebarTitle: "Introduction"
+---
 
-DotPortion is your **AI-native visual backend and workflow engine** for building modern APIs, automations, and AI-powered products — all without wrestling with infrastructure.
+# What is DotPortion?
 
-Whether you’re shipping a SaaS in a weekend, automating internal tools, or building fully autonomous AI systems, DotPortion gives you everything you need in one place:
+DotPortion is a **visual, no‑code API builder** that lets you design, deploy, and manage backend APIs using a node‑based workflow, without writing traditional server code.
 
-- APIs & workflows
-- Data & auth
-- Logic & branching
-- Integrations & webhooks
-- Versioning, environments, and observability
+Instead of writing controllers, routes, and services, you **connect nodes** that define:
 
-**Design visually, extend with code, and let AI handle the boring parts. 🚀**
+- how an API is triggered
+- how data flows
+- how logic is applied
+- how responses are returned
+
+DotPortion handles infrastructure, execution, and deployment for you.
 
 ---
 
-## Why DotPortion?
+# Who is DotPortion for?
 
-<CardGroup cols={2}>
-  <Card title="Visual Workflow Builder" icon="share-nodes">
-    Build complex backend flows as visual graphs: drag, drop, connect. Branching, conditions, loops, retries — all modeled as nodes you can understand at a glance.
-  </Card>
-  <Card title="No-Code & Low-Code Together" icon="code">
-    Start with no-code nodes for common tasks, then drop into TypeScript/JavaScript whenever you need full control. Every node’s code is visible and tweakable.
-  </Card>
-  <Card title="API-first by Design" icon="server">
-    Create secure, scalable APIs and webhooks in minutes. Perfect for powering frontends built with Next.js, React, FlutterFlow, Webflow, Framer, and more.
-  </Card>
-  <Card title="AI-Native Platform" icon="robot">
-    Orchestrate AI agents, tool calls, RAG pipelines, and multi-step reasoning flows. Let AI generate nodes, wire integrations, and even propose full workflows.
-  </Card>
-  <Card title="Serverless & Scalable" icon="cloud-arrow-up">
-    Built on modern cloud infrastructure with autoscaling, background jobs, queues, and scheduled tasks — so you never have to touch DevOps.
-  </Card>
-  <Card title="Built for Teams & Products" icon="users-gear">
-    Projects, environments, secrets management, role-based access, version control, and deployment workflows that match how real teams ship real products.
-  </Card>
-</CardGroup>
+DotPortion is built for:
+
+- **Founders** who want to ship backend APIs fast
+- **Frontend developers** who don’t want to manage backend complexity
+- **No‑code / low‑code builders** creating internal tools or SaaS MVPs
+- **Teams** who want versioned, auditable, visual backend logic
+
+If you’ve ever struggled with backend setup, scaling, or maintenance — DotPortion is designed for you.
 
 ---
 
-## How do you want to build?
+# What can you build with DotPortion?
 
-<Tabs>
-  <Tab title="Build Visually">
-    ### The Visual Workflow Builder
+With DotPortion, you can build:
 
-    DotPortion is centered around a **visual canvas** where each node represents a step in your backend logic — API call, DB query, condition, loop, AI action, transformation, and more.
+- REST APIs
+- CRUD backends
+- Authentication flows (JWT‑based)
+- Database‑connected endpoints
+- Webhook receivers
+- Workflow automations
+- API proxies to third‑party services
 
-    <Card title="Canvas View" icon="diagram-project">
-      <br />
-
-      <Frame caption="Perfect for visual thinkers — see your entire backend as a living flow instead of scattered scripts.">
-        {/* You can replace this with a real screenshot later */}
-
-        ![DotPortion Visual Canvas](/assets/dotportion/canvas-preview.png)
-      </Frame>
-      The **Canvas View** lets you design workflows like a story: connect triggers, add logic, branch flows, and inspect data as it moves between nodes — all in one unified view.
-    </Card>
-    <br />
-
-    <Card title="Node-based Logic" icon="layer-group">
-      <br />
-
-      Use purpose-built node types for:
-
-      - Parameters & validation
-      - Logic & branching
-      - Database reads/writes
-      - Auth & JWT handling
-      - External API calls
-      - AI model calls & tools
-      - Responses, queues, and background jobs
-
-      Each node is configurable via a friendly UI, but still backed by real code for advanced scenarios.
-    </Card>
-  </Tab>
-  <Tab title="Build with Code">
-    ### Bring Your Own JavaScript / TypeScript
-
-    Prefer code? DotPortion gives you a **first-class coding experience** inside each workflow.
-
-    <Card title="Code Nodes" icon="terminal">
-      Add **Code Nodes** wherever you need custom logic: transform payloads, implement edge cases, or wire niche integrations.
-
-      - Write in JavaScript or TypeScript
-      - Use 1M+ NPM packages
-      - Access workflow context, environment variables, and secrets
-      - Log, debug, and inspect execution easily
-    </Card>
-    <Card title="Version Control & Environments" icon="git-branch">
-      DotPortion comes with built-in versioning for workflows:
-
-      - Track changes over time
-      - Tag versions (e.g. `v1`, `staging`, `production`)
-      - Roll back if something breaks
-      - Promote workflows across environments safely
-    </Card>
-  </Tab>
-  <Tab title="Build with AI">
-    ### Build without starting from scratch
-
-    DotPortion is designed to **collaborate with AI**, not just call it.
-
-    <Card title="AI Workflow Assistant" icon="comments">
-      Describe your use case in natural language:
-
-      - “Create a user signup API with email verification”
-      - “Build a Stripe subscription flow with webhooks”
-      - “Set up a workflow that triggers when a row is created and sends a Slack alert”
-
-      The AI assistant can propose a workflow, wire the nodes, and generate code where needed — you keep full control to review and tweak.
-    </Card>
-    <Card title="AI-Generated Nodes" icon="wand-magic-sparkles">
-      If an integration or node doesn’t exist yet, just **ask AI**:
-
-      - “Build a node that calls this custom REST API and normalizes the response”
-      - “Generate a node that uses this NPM package to process images”
-
-      DotPortion turns your description into a reusable node you can edit, reuse, and share.
-    </Card>
-  </Tab>
-</Tabs>
+All of this is done visually using nodes.
 
 ---
 
-## What can you build with DotPortion?
+# How DotPortion works
 
-Use DotPortion to power almost anything that needs a backend:
+DotPortion is built around **workflows**.
 
-- **Public & private APIs** for your web and mobile apps
-- **Internal tools & dashboards** for operations teams
-- **CRON jobs & scheduled tasks** (daily, hourly, custom schedules)
-- **Event-driven workflows** (webhooks, DB events, message queues)
-- **AI automation**: chatbots, assistants, retrieval flows, agentic pipelines
-- **Payment & billing flows**: Stripe, Razorpay, etc.
-- **Notification systems**: email, SMS, Slack, Discord, WhatsApp, Telegram
+A workflow is:
 
-If it talks HTTP or has an SDK, you can plug it into DotPortion.
+- a sequence of connected nodes
+- executed from top to bottom
+- where data flows between nodes
 
----
+Each node performs **one clear responsibility**.
 
-## Core Features at a Glance 🪄
+Think of a workflow like a pipeline:
 
-- **Visual workflow canvas** – Node-based builder that keeps complex logic understandable.
-- **API & webhook designer** – Turn workflows into REST / webhook endpoints instantly.
-- **Database & storage** – Connect to Postgres, MongoDB, and other popular databases.
-- **Auth & security** – JWT, API keys, role-based access, and secrets management.
-- **AI-ready** – Connect to OpenAI, Anthropic, and other AI providers; build tool-using agents.
-- **Serverless runtime** – Autoscaling execution with background jobs and queues.
-- **Version control** – Workflow history, tags, and rollbacks.
-- **Observability** – Execution logs, runs, errors, and performance insights.
+`Request → Parameters → Logic → Database → Response`
+
+Once deployed, every workflow becomes a **live API endpoint**.
 
 ---
 
-## Quick Start
+# Core Building Blocks
 
-import { Card, Cards } from 'nextra/components';
+## Workflow
 
-Follow these resources to get productive fast:
+A workflow represents a complete backend API.
 
-<Cards num={3}>
-  <Card image arrow title="Create your first workflow" href="/basics/workflow">
-    <>![DotPortion Workflow](/assets/dotportion/workflow-cover.png)</>
-  </Card>
+## Node
 
-  <Card image arrow title="Understand nodes" href="/basics/nodes">
-    <>![DotPortion Nodes](/assets/dotportion/nodes-cover.png)</>
-  </Card>
+A node is a single operation inside a workflow.
 
-  <Card image arrow title="Expose an API endpoint" href="/basics/api">
-    <>![DotPortion API](/assets/dotportion/api-cover.png)</>
-  </Card>
-</Cards>
+### Examples:
 
-From there, you can:
+- API Trigger Node
+- Parameters Node
+- Logic Node
+- Database Node
+- Response Node
 
-- Connect your favorite tools and databases
-- Add logic with visual nodes or code nodes
-- Use AI to generate or extend workflows
-- Deploy with a single click when you’re ready
+## Execution Context
+
+Each node receives data from previous nodes and can modify or extend it.
 
 ---
 
-## DotPortion FAQ
+# Why DotPortion?
 
-export function FAQBox({ title, children }) {
-  return (
-    <details open className="last-of-type:mb-0 rounded-lg bg-neutral-50 dark:bg-neutral-800 p-2 mt-4">
-      <summary>
-        <strong className="text-lg">{title}</strong>
-      </summary>
-      <div className="nx-p-2">{children}</div>
-    </details>
-  );
-}
+Traditional backend development requires:
 
-<FAQBox title="Is DotPortion no-code or low-code?">
-  DotPortion is **both**. You can build entire workflows using only visual nodes,
-  but every node can also be opened and edited in JavaScript/TypeScript when you need
-  more control. That means you never get “stuck” behind a no-code limitation.
-</FAQBox>
+- writing boilerplate code
+- managing infrastructure
+- handling deployments
+- debugging runtime issues
 
-<FAQBox title="What kind of projects is DotPortion good for?">
-  Anything that needs a backend: SaaS applications, internal tools, AI automations,
-  background tasks, integrations between services, and more. If you’re wiring APIs,
-  databases, and AI together, DotPortion is a strong fit.
-</FAQBox>
+DotPortion abstracts all of this.
 
-<FAQBox title="Can I use DotPortion with my existing frontend stack?">
-  Yes. DotPortion is **frontend-agnostic**. Use it with Next.js, React, Vue, Flutter,
-  mobile apps, or no-code builders like Webflow, Framer, FlutterFlow, Bubble, and others.
-</FAQBox>
-
-<FAQBox title="Do I need to manage servers?">
-  No. DotPortion runs on a **serverless architecture**. You focus on workflows and logic;
-  we handle deployment, scaling, and infrastructure.
-</FAQBox>
-
----
-
-<Info>
-  Need help getting started or want to brainstorm workflows?\
-  Join the DotPortion community and chat with other builders and developers on Discord.
-
-  {/* Replace with your real link when ready */}
-
-  [Join the community](https://dotportion.com/discord)
-</Info>
+You focus only on **what your API should do**, DotPortion handles the rest.
