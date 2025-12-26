@@ -48,6 +48,14 @@
               "examples/Todo/update-todo",
               "examples/Todo/delete-todo"
                 ]
+              },
+               {
+                "group": "Authentication",
+                "icon": "square-terminal",
+                "pages": [
+                 "examples/authentication/signup",
+              "examples/authentication/login"
+                ]
               }
             ]
       }
