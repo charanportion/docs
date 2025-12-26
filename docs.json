@@ -37,9 +37,6 @@
       },
       {
         "tab": "Examples",
-        "menu": [
-          {
-            "item": "Todo",
              "groups": [
               {
                 "group": "Todo",
@@ -53,8 +50,6 @@
                 ]
               }
             ]
-          }
-        ]
       }
     ]
   },
