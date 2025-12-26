@@ -25,39 +25,44 @@
     "tabs": [
       {
         "tab": "Documentation",
-        "menu": [
+        "groups": [
           {
-            "item": "Getting started",
+            "group": "Getting Started",
             "pages": [
               "introduction",
               "quickstart"
+            ]
+          },
+          {
+            "group": "Authentication",
+            "pages": [
+              "examples/authentication/signup",
+              "examples/authentication/login"
             ]
           }
         ]
       },
       {
         "tab": "Examples",
-             "groups": [
-              {
-                "group": "Todo",
-                "icon": "square-terminal",
-                "pages": [
-                 "examples/Todo/create-todo",
+        "groups": [
+          {
+            "group": "Todo",
+            "pages": [
+              "examples/Todo/create-todo",
               "examples/Todo/get-todo",
               "examples/Todo/get-todos",
               "examples/Todo/update-todo",
               "examples/Todo/delete-todo"
-                ]
-              },
-               {
-                "group": "Authentication",
-                "icon": "square-terminal",
-                "pages": [
-                 "examples/authentication/signup",
-              "examples/authentication/login"
-                ]
-              }
             ]
+          },
+          {
+            "group": "Authentication",
+            "pages": [
+              "examples/authentication/signup",
+              "examples/authentication/login"
+            ]
+          }
+        ]
       }
     ]
   },
