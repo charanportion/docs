@@ -10,12 +10,6 @@
   "favicon": "/favicon.svg",
   "navigation": {
     "global": {
-      "tabs": [
-        {
-          "tab": "Examples",
-          "href": ""
-        }
-      ],
       "anchors": [
         {
           "anchor": "Discord",
@@ -36,8 +30,18 @@
             "item": "Getting started",
             "pages": [
               "introduction",
-              "quickstart",
-              "development"
+              "quickstart"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Examples",
+        "menu": [
+          {
+            "item": "Todo",
+            "pages": [
+              "examples/todo/create-todo"
             ]
           }
         ]
