@@ -1,0 +1,127 @@
+---
+title: "Quick Start"
+description: "Build and deploy your first API with DotPortion in minutes."
+---
+
+# Quick Start
+
+This guide walks you through creating and deploying your **first API** using DotPortion, from project setup to testing a live endpoint.
+
+By the end, you’ll have a working API you can call from any client.
+
+---
+
+## Step 1: Create a Project
+
+A **project** is the top-level container for your APIs, workflows, and configurations.
+
+1. Go to the **Projects** dashboard
+2. Click **Create Project**
+3. Enter:
+   - **Project Name** – A short, meaningful name
+   - **Description** – What this project is used for
+
+Once created, all workflows and APIs will live inside this project.
+
+---
+
+## Step 2: Create a Workflow
+
+A **workflow** defines how an API request is processed.
+
+1. Inside your project, click **Create Workflow**
+2. Enter:
+   - **Workflow Name** – Example: `Create User API`
+   - **Description** – What this workflow does
+   - **Method** – Choose an HTTP method (`GET`, `POST`, `PUT`, etc.)
+   - **Path** – Define the API route
+     - Do **not** start the path with / 
+
+After creation, you’ll be taken to the workflow builder.
+
+#### Example
+
+```text
+Method: POST
+Path: users/create
+```
+
+This will create an endpoint like:
+
+```
+POST https://api.dotportion.com/api/{tenent-name}/{project-id}/users/create
+```
+
+> Tip: DotPortion automatically handles routing, you only define the method and path.
+
+---
+
+## Step 4: Test the Workflow
+
+Before deploying, you can test your API directly from DotPortion.
+
+1. Open the **Test Panel** inside the workflow editor
+2. Provide:
+   - Request body
+   - Query parameters (if any)
+   - Headers (if required)
+3. Click **Run**
+
+You’ll see:
+
+- Node-by-node execution
+- Request and response data
+- Errors (if any)
+
+This helps you validate logic before making the API public.
+
+---
+
+## Step 5: Deploy the Workflow
+
+Once you’re happy with the result, deploy your API.
+
+1. Go to the **Workflows Table**
+2. Find your workflow
+3. Toggle the **Deploy** switch to ON
+
+When deployment is enabled:
+
+- The API becomes publicly accessible
+- DotPortion hosts and manages the endpoint
+
+You can toggle deployment OFF anytime to disable the API.
+
+---
+
+## Step 6: Get Your API Endpoint
+
+To find your API URL:
+
+1. Open **API Docs** for your project
+2. Copy the generated endpoint URL
+
+This URL is what you’ll use in:
+
+- Frontend apps
+- Mobile apps
+- Backend services
+- API clients like Postman or curl
+
+---
+
+## What’s Next?
+
+You’ve successfully:
+
+- Created a project
+- Built a workflow
+- Tested your API
+- Deployed it live 🎉
+
+Next, you can:
+
+- Add more nodes (logic, database, auth)
+- Create additional workflows
+- Version and iterate safely
+- Explore AI-assisted workflow building
