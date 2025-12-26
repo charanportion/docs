@@ -34,10 +34,26 @@
             ]
           },
           {
-            "group": "Authentication",
+            "group": "Nodes",
             "pages": [
-              "examples/authentication/signup",
-              "examples/authentication/login"
+              "nodes/api-start",
+              "nodes/request-parameters",
+              "nodes/response",
+              "nodes/mongodb",
+              "nodes/database",
+              "nodes/logic",
+              "nodes/condition",
+              "nodes/loop",
+              "nodes/jwt-verify",
+              "nodes/jwt-generate"
+            ]
+          },
+          {
+            "group": "Help & Resources",
+            "pages": [
+              "help-resources/change-log",
+              "help-resources/get-in-touch",
+              "help-resources/frequently-asked-questions"
             ]
           }
         ]
