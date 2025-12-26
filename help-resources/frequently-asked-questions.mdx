@@ -1,3 +1,168 @@
 ---
 title: "Frequently Asked Questions"
+description: "Answers to common questions about DotPortion, workflows, nodes, executions, security, and platform usage."
+---
+
+# Frequently Asked Questions
+
+<AccordionGroup>
+  <Accordion title="What is DotPortion, and who is it for?">
+    DotPortion is a **no-code API builder and workflow orchestration platform** that lets you design, test, version, and deploy APIs visually using nodes.
+
+    It’s built for:
+
+    - Startup founders
+    - Backend & full-stack developers
+    - Internal tooling teams
+    - Product teams building APIs without boilerplate
+  </Accordion>
+  <Accordion title="How does DotPortion differ from tools like Postman, n8n, or backend frameworks?">
+    DotPortion is **not just an API client or automation tool**.
+
+    - Unlike Postman, DotPortion **creates and hosts APIs**
+    - Unlike traditional frameworks, you **don’t write boilerplate code**
+    - Unlike automation tools, workflows are **request-driven APIs**, not cron jobs
+
+    You visually define:
+
+    - Request parameters
+    - Business logic
+    - Database operations
+    - Authentication
+    - Response formatting
+  </Accordion>
+  <Accordion title="What is a workflow in DotPortion?">
+    A workflow is a **visual execution graph** that represents how an API request is processed.
+
+    Each workflow:
+
+    - Starts with an API trigger
+    - Passes data through connected nodes
+    - Executes nodes sequentially or conditionally
+    - Returns a structured HTTP response
+  </Accordion>
+  <Accordion title="What are nodes, and how do they work?">
+    Nodes are the **building blocks** of a workflow.\
+    Each node performs a single responsibility, such as:
+
+    - Reading request parameters
+    - Running logic or conditions
+    - Querying a database
+    - Generating JWTs
+    - Formatting responses
+
+    Data flows between nodes automatically based on connections.
+  </Accordion>
+  <Accordion title="Can I write custom logic or code inside DotPortion?">
+    Yes. DotPortion supports **custom logic nodes** where you can write controlled JavaScript logic.
+
+    - Runs in a secure sandbox
+    - No access to the underlying system
+    - Ideal for transformations, validations, and calculations
+  </Accordion>
+  <Accordion title="How is data passed between nodes?">
+    Each node receives input from:
+
+    - The request
+    - Previous nodes’ outputs
+
+    Outputs are available as structured JSON and can be referenced dynamically in downstream nodes.
+  </Accordion>
+  <Accordion title="Does DotPortion support databases?">
+    Yes. DotPortion supports database nodes with:
+
+    - Secure credential management
+    - Dynamic queries
+    - Read & write operations
+
+    Supported databases may vary by plan and region.
+  </Accordion>
+  <Accordion title="How does authentication work?">
+    DotPortion supports authentication via:
+
+    - API keys
+    - JWT generation & validation
+    - Custom auth logic using nodes
+
+    Authentication can be enforced per workflow.
+  </Accordion>
+  <Accordion title="Is version control supported?">
+    Yes. DotPortion includes **workflow versioning**, allowing you to:
+
+    - Track changes
+    - Roll back to previous versions
+    - Maintain staging and production flows
+  </Accordion>
+  <Accordion title="How are workflows deployed?">
+    Once a workflow is ready:
+
+    - You deploy it with a single click
+    - DotPortion provisions and hosts the API
+    - Each deployment gets a stable endpoint
+  </Accordion>
+  <Accordion title="What happens if a workflow fails during execution?">
+    If a node fails:
+
+    - Execution stops immediately
+    - Errors are logged with node-level details
+    - You can inspect inputs, outputs, and failure reasons
+  </Accordion>
+  <Accordion title="How do I debug workflows?">
+    DotPortion provides:
+
+    - Step-by-step execution logs
+    - Node-level input/output inspection
+    - Error tracing for failed executions
+  </Accordion>
+  <Accordion title="Is user data stored or used for training AI models?">
+    No.
+
+    - API request data is **not used for training**
+    - Execution data is retained only for debugging and logs
+    - Credentials are securely encrypted
+  </Accordion>
+  <Accordion title="Where is DotPortion hosted?">
+    DotPortion infrastructure is hosted on **secure cloud providers** with industry-standard practices for availability, isolation, and encryption.
+  </Accordion>
+  <Accordion title="Are there rate limits?">
+    Yes. Rate limits depend on your plan and usage tier.
+
+    Limits help ensure platform stability and fair usage.
+  </Accordion>
+  <Accordion title="How do I report bugs or issues?">
+    If you find a bug:
+
+    - Share details in the community
+    - Include workflow screenshots or JSON
+    - Mention the node where it occurred
+
+    Our team actively monitors reports.
+  </Accordion>
+  <Accordion title="How do I request new features or nodes?">
+    We actively build based on user feedback.
+
+    Feature requests can include:
+
+    - New nodes
+    - Integrations
+    - Execution improvements
+    - UI/UX enhancements
+
+    Share your ideas in the community.
+  </Accordion>
+  <Accordion title="Does DotPortion guarantee uptime or SLAs?">
+    During beta, we do not provide formal SLAs.
+
+    Stability and reliability are top priorities, and uptime guarantees may be introduced in enterprise plans.
+  </Accordion>
+  <Accordion title="I have a question that isn’t listed here">
+    You can:
+
+    - Ask in the community
+    - Reach out to support at [support@dotportion.com](mailto:support@dotportion.com)
+
+    We’re happy to help.
+  </Accordion>
+</AccordionGroup>
+
 ---
