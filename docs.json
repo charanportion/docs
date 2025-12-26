@@ -10,12 +10,6 @@
   "favicon": "/favicon.svg",
   "navigation": {
     "global": {
-      "dropdowns": [
-        {
-          "dropdown": "Untitled Dropdown",
-          "href": "https://mintlify.com"
-        }
-      ],
       "anchors": [
         {
           "anchor": "Blog",
@@ -24,34 +18,10 @@
         }
       ]
     },
-    "tabs": [
+    "dropdowns": [
       {
-        "tab": "Guides",
+        "dropdown": "Guides",
         "menu": [
-          {
-            "item": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "item": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "item": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
-          },
           {
             "item": "Getting started",
             "pages": [
