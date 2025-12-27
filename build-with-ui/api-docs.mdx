@@ -1,3 +1,226 @@
 ---
-title: "Api Docs"
+title: "API Docs"
+description: "View, test, and integrate deployed workflow APIs with auto-generated documentation, parameters, and code snippets."
 ---
+
+# API Docs
+
+The **API Docs** section provides **auto-generated documentation** for all deployed workflows in your project.
+
+It allows you to:
+
+- View live API endpoints
+- See required request parameters
+- Copy ready-to-use integration code
+- Inspect example responses
+
+This makes it easy to integrate DotPortion APIs into frontend apps, backend services, and third-party tools.
+
+---
+
+## What Are API Docs?
+
+API Docs are generated automatically from your **deployed workflows**.
+
+For each deployed workflow, DotPortion creates:
+
+- A public API endpoint
+- Request schema (params, headers, body)
+- Authentication requirements
+- Code snippets for common languages
+- Example responses
+
+No manual documentation is required.
+
+---
+
+## API List View
+
+> 🔗 **Deployed APIs (UI Reference)**
+
+![API List Placeholder](/images/api-docs/api-list.png)
+
+This view shows:
+
+- Workflow name
+- HTTP method
+- API path
+- Deployment status
+
+Clicking an API opens its detailed documentation.
+
+---
+
+## API Endpoint Details
+
+> 🌐 **API Endpoint Details (UI Reference)**
+
+![API Endpoint Placeholder](/images/api-docs/api-endpoint.png)
+
+Each API includes:
+
+- **Full API URL**
+- **HTTP Method**
+- **Endpoint Path**
+
+### Example
+
+```text
+POST https://api.dotportion.com/project-id/users/create
+```
+
+This is the live endpoint created from the deployed workflow.
+
+---
+
+## Required Parameters
+
+> 🧾 **Request Parameters (UI Reference)**
+
+API Docs clearly show what inputs are required.
+
+### Supported Parameter Types
+
+- **Path parameters**
+- **Query parameters**
+- **Headers**
+- **Request body**
+
+Each parameter includes:
+
+- Name
+- Type
+- Required / optional status
+- Description (if provided)
+
+This data is derived from your workflow configuration.
+
+---
+
+## Authentication Requirements
+
+If the workflow requires authentication, API Docs indicate:
+
+- Auth type (e.g. API Key, JWT)
+- Required headers
+- Token format
+
+This ensures consumers know exactly how to call the API.
+
+---
+
+## Integration Code Snippets
+
+> 🧩 **Integration Snippets (UI Reference)**
+
+DotPortion provides ready-to-use code snippets for common platforms.
+
+### Example (JavaScript – Fetch)
+
+```
+fetch("https://api.dotportion.com/project-id/users/create", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_JWT_TOKEN"
+  },
+  body: JSON.stringify({
+    name: "John Doe",
+    email: "john@example.com"
+  })
+})
+.then(res => res.json())
+.then(data => console.log(data));
+```
+
+### Example (cURL)
+
+```
+curl -X POST \
+  https://api.dotportion.com/project-id/users/create \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{
+    "name": "John Doe",
+    "email": "john@example.com"
+  }'
+```
+
+---
+
+## Response Examples
+
+> 📦 **Response Preview (UI Reference)**
+
+Each API includes a sample response generated from the workflow’s Response Node.
+
+### Example
+
+```
+{
+  "success": true,
+  "userId": "64f8a21b9c1e2a001234abcd"
+}
+```
+
+This helps consumers understand:
+
+- Response structure
+- Field names
+- Data types
+- Success and error formats
+
+---
+
+## Live Testing (Optional)
+
+If enabled, API Docs may allow:
+
+- Sending test requests
+- Viewing live responses
+- Validating integrations quickly
+
+This is especially useful during development.
+
+---
+
+## How API Docs Stay in Sync
+
+- Docs update automatically on redeploy
+- Parameter changes reflect instantly
+- Response examples follow workflow logic
+- Versioned workflows generate versioned APIs
+
+No manual updates required.
+
+---
+
+## Best Practices
+
+- Always redeploy after workflow changes
+- Review API Docs before sharing endpoints
+- Use API Docs as the source of truth
+- Share docs with frontend and integration teams
+
+---
+
+## Important Notes
+
+- Only deployed workflows appear in API Docs
+- Undeployed changes are not reflected
+- API URLs are project-scoped
+- Authentication rules apply exactly as configured
+
+---
+
+## Summary
+
+| Feature            | Supported |
+| :----------------- | :-------- |
+| API URL            | Yes       |
+| Request parameters | Yes       |
+| Auth requirements  | Yes       |
+| Code snippets      | Yes       |
+| Response examples  | Yes       |
+
+API Docs turn your workflows into **clear, consumable APIs**—ready to integrate anywhere.

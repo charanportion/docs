@@ -1,3 +1,167 @@
 ---
-title: "Logs"
+title: "Logs & Observability"
+description: "Understand workflow execution using node-level logs, execution charts, and live logs in DotPortion."
 ---
+
+# Logs & Observability
+
+DotPortion provides **built-in observability** for workflows, so you can understand **what happened**, **where it happened**, and **why it happened**—without adding manual logging.
+
+Logs are designed to give **clear visibility at every level of execution**, from high-level trends to node-by-node details.
+
+---
+
+## What Are Logs in DotPortion?
+
+Logs capture **execution data** whenever a workflow runs.
+
+They help you:
+- Debug failed executions
+- Inspect data flow between nodes
+- Monitor performance and usage
+- Observe workflows in real time
+
+DotPortion logs are available in three main views:
+1. **Execution Charts**
+2. **Node-Level Logs**
+3. **Live Logs (Realtime Execution)**
+
+---
+
+## Execution Charts
+
+Execution charts provide a **high-level overview** of workflow activity over time.
+
+> 📊 **Execution Charts (UI Reference)**
+
+![Execution Charts Placeholder](/images/logs/execution-charts.png)
+
+### What Charts Show
+
+Charts typically display:
+- Number of executions
+- Success vs failure rate
+- Execution trends over time
+- Error frequency
+
+This view is useful for:
+- Monitoring API health
+- Spotting spikes or drops in traffic
+- Identifying unstable workflows
+
+---
+
+## Node-Level Logs
+
+Node-level logs show **exactly what happened inside each node** during a workflow execution.
+
+> 🧩 **Node-Level Logs (UI Reference)**
+
+![Node Level Logs Placeholder](/images/logs/node-level-logs.png)
+
+### What You Can See
+
+For each node execution:
+- Node name and type
+- Execution status (success / failure)
+- Input data received by the node
+- Output data produced by the node
+- Error details (if any)
+- Execution duration
+
+This makes debugging precise and fast.
+
+---
+
+### Example Use Case
+
+If a workflow fails:
+1. Open the failed execution
+2. Inspect nodes one by one
+3. Identify the node where execution stopped
+4. Review inputs and outputs
+5. Fix logic or configuration
+
+No guesswork required.
+
+---
+
+## Live Logs (Realtime Execution)
+
+Live logs stream execution events **as the workflow runs**, node by node.
+
+> ⚡ **Live Logs (UI Reference)**
+
+![Live Logs Placeholder](/images/logs/live-logs.png)
+
+### When Live Logs Are Used
+
+Live logs are available when using:
+- Realtime Executor
+- Manual workflow testing
+- Development and debugging sessions
+
+They allow you to:
+- Watch nodes execute in sequence
+- See inputs and outputs instantly
+- Catch failures the moment they occur
+
+This turns workflows into **transparent, observable systems** instead of black boxes.
+
+---
+
+## Execution States
+
+Each execution can be in one of the following states:
+
+| State | Description |
+|-----|------------|
+| Running | Workflow is currently executing |
+| Success | Execution completed successfully |
+| Failed | Execution stopped due to an error |
+
+These states are reflected consistently across charts, logs, and live views.
+
+---
+
+## Security & Data Safety
+
+- Secrets are **never shown** in logs
+- Sensitive values are masked
+- Logs are visible only to authorized users
+- Logs are stored securely for debugging purposes
+
+---
+
+## Best Practices
+
+- Use execution charts for monitoring
+- Use node-level logs for debugging
+- Use live logs during development
+- Avoid logging sensitive data in logic nodes
+- Review logs before deploying changes
+
+---
+
+## Important Notes
+
+- Logs reflect real execution behavior
+- Side effects (DB writes, external calls) are logged but not replayed
+- Logs are tied to workflow versions
+- Old executions remain traceable after updates
+
+---
+
+## Summary
+
+| Feature | Purpose |
+|------|--------|
+| Execution Charts | High-level monitoring |
+| Node-Level Logs | Detailed debugging |
+| Live Logs | Real-time visibility |
+
+Logs give you **confidence and control** when building and running APIs in DotPortion.
+
+---
+
+Next, learn how to debug workflows using **Realtime Executor and Logs together**.

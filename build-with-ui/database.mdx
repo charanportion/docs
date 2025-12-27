@@ -1,3 +1,187 @@
 ---
 title: "Database"
+description: "Explore, read, create, update, and delete database records using DotPortion’s built-in database interface."
 ---
+
+# Database
+
+The **Database** section in DotPortion provides a **visual interface to explore and manage your data**, similar to tools like **MongoDB Compass**.
+
+It allows you to:
+
+- View databases and collections
+- Read documents
+- Create new records
+- Update existing records
+- Delete records safely
+
+This interface is designed for **development, debugging, and inspection**, and works alongside database nodes used in workflows.
+
+---
+
+## Supported Databases
+
+DotPortion currently supports:
+
+- **External MongoDB** (via MongoDB URL secret)
+- **DotPortion Platform Database** (managed MongoDB)
+
+Both are accessed through the same UI and behave consistently.
+
+---
+
+## Database Explorer UI
+
+> 📁 **Database Explorer (UI Reference)**
+
+![Database Explorer Placeholder](/images/database/database-explorer.png)
+
+The Database Explorer lets you select:
+
+- A database connection
+- A database
+- A collection
+
+Once selected, documents are displayed in a structured, readable format.
+
+---
+
+## Browsing Collections
+
+After selecting a database:
+
+- All available **collections** are listed
+- Each collection shows document count (when available)
+- Clicking a collection loads its documents
+
+This mirrors the experience of MongoDB Compass.
+
+---
+
+## Reading Data
+
+> 📄 **Read Documents (UI Reference)**
+
+![Read Documents Placeholder](/images/database/read-documents.png)
+
+You can:
+
+- View documents in JSON format
+- Expand and collapse fields
+- Scroll through records
+- Inspect values for debugging
+
+This is useful for:
+
+- Verifying workflow outputs
+- Debugging database logic
+- Understanding data shape
+
+---
+
+## Creating Data
+
+> ➕ **Create Document (UI Reference)**
+
+![Create Document Placeholder](/images/database/create-document.png)
+
+You can create new documents by:
+
+- Selecting a collection
+- Providing a valid JSON object
+- Saving the document
+
+DotPortion validates the input before inserting the record.
+
+---
+
+## Updating Data
+
+> ✏️ **Update Document (UI Reference)**
+
+![Update Document Placeholder](/images/database/update-document.png)
+
+You can update documents by:
+
+- Editing existing fields
+- Adding new fields
+- Modifying nested values
+
+Changes are applied immediately after confirmation.
+
+---
+
+## Deleting Data
+
+> 🗑️ **Delete Document (UI Reference)**
+
+![Delete Document Placeholder](/images/database/delete-document.png)
+
+You can delete:
+
+- Individual documents
+- Selected records (where supported)
+
+⚠️ Deletions are permanent and cannot be undone.
+
+---
+
+## Platform Database vs External MongoDB
+
+| Feature       | Platform Database | External MongoDB            |
+| ------------- | ----------------- | --------------------------- |
+| Setup         | No setup required | Requires MongoDB URL secret |
+| Management    | Fully managed     | User-managed                |
+| Access        | Project-scoped    | External cluster            |
+| UI Experience | Same              | Same                        |
+
+---
+
+## How This Relates to Workflows
+
+- Database UI is for **manual inspection and management**
+- Database Nodes are for **runtime execution**
+- Both use the **same underlying data**
+- Changes made in UI affect workflows immediately
+
+---
+
+## Security & Permissions
+
+- Database access is project-scoped
+- Secrets are required for external databases
+- Only authorized users can modify data
+- Credentials are never exposed
+
+---
+
+## Best Practices
+
+- Use UI for debugging and inspection
+- Avoid frequent destructive changes in production
+- Prefer workflows for automated operations
+- Validate data shapes before inserting records
+- Use separate databases for dev and prod
+
+---
+
+## Important Notes
+
+- UI actions directly modify the database
+- There is no automatic rollback
+- Large collections may be paginated
+- Performance depends on database size and indexes
+
+---
+
+## Summary
+
+| Action           | Supported |
+| ---------------- | --------- |
+| View collections | Yes       |
+| Read documents   | Yes       |
+| Create documents | Yes       |
+| Update documents | Yes       |
+| Delete documents | Yes       |
+
+The Database interface gives you **full visibility and control over your data**, without leaving DotPortion.

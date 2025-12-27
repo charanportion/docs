@@ -1,3 +1,153 @@
 ---
-title: "Realtime Execution"
+title: "Realtime Executor"
+description: "Execute workflows in real time and receive live status, logs, and results as they happen."
 ---
+
+# Realtime Executor
+
+The **Realtime Executor** allows workflows in DotPortion to be executed **live**, with immediate feedback on execution status, node progress, and results.
+
+Instead of waiting for a request to complete silently, the Realtime Executor streams execution updates as the workflow runs.
+
+This is especially useful during **development, testing, and debugging**.
+
+---
+
+## What Is the Realtime Executor?
+
+The Realtime Executor is an execution mode that:
+
+- Runs workflows instantly
+- Streams execution progress in real time
+- Shows node-by-node status updates
+- Surfaces errors immediately
+- Returns the final response when execution completes
+
+Think of it as **“live execution mode”** for your workflows.
+
+---
+
+## Why Realtime Execution Matters
+
+Traditional APIs behave like black boxes:
+
+- You send a request
+- You wait
+- You only see the final response (or error)
+
+The Realtime Executor removes this opacity.
+
+It allows you to:
+
+- Understand how data flows through nodes
+- See exactly where failures occur
+- Debug logic without adding logs
+- Iterate faster during development
+
+---
+
+## How Realtime Execution Works
+
+When a workflow is executed using the Realtime Executor:
+
+1. Execution starts at the **API Start Node**
+2. Each node runs sequentially
+3. As each node executes:
+   - Status updates are emitted
+   - Inputs and outputs are captured
+4. If a node fails:
+   - Execution stops immediately
+   - Error details are streamed
+5. When complete:
+   - Final response is returned
+
+All updates happen in **real time**.
+
+---
+
+## What You See During Execution
+
+During a realtime execution, you can observe:
+
+- Execution start event
+- Node-by-node progress
+- Node input and output data
+- Execution errors (if any)
+- Execution completion event
+
+This provides full visibility into the workflow lifecycle.
+
+---
+
+## Realtime Executor vs Standard Execution
+
+| Feature               | Realtime Executor | Standard Execution  |
+| --------------------- | ----------------- | ------------------- |
+| Execution feedback    | Live              | Final response only |
+| Node-level visibility | Yes               | No                  |
+| Debugging             | Ideal             | Limited             |
+| Production usage      | Limited           | Recommended         |
+
+---
+
+## When to Use Realtime Executor
+
+Use the Realtime Executor when:
+
+- Building new workflows
+- Debugging logic or data issues
+- Testing database or auth flows
+- Validating request/response behavior
+
+Avoid using it for:
+
+- High-throughput production traffic
+- Latency-sensitive public APIs
+
+---
+
+## Error Handling in Realtime Execution
+
+If a node fails during execution:
+
+- The error is streamed immediately
+- The failing node is highlighted
+- Downstream nodes are not executed
+- The execution ends with a failure state
+
+This makes troubleshooting fast and precise.
+
+---
+
+## Security & Isolation
+
+- Realtime executions run in isolated environments
+- Secrets are injected securely at runtime
+- Sensitive values are never streamed or logged
+- Execution data is visible only to authorized users
+
+---
+
+## Important Notes
+
+- Realtime Executor is intended primarily for development and testing
+- Execution behavior matches production execution logic
+- Any side effects (database writes, external calls) still occur
+- Use caution when running destructive workflows
+
+---
+
+## Best Practices
+
+- Use Realtime Executor before deploying workflows
+- Validate edge cases using live execution
+- Avoid running destructive operations repeatedly
+- Switch to standard execution for production traffic
+
+---
+
+## Summary
+
+The Realtime Executor gives you **full visibility into how workflows run**.
+
+It turns workflows from black boxes into transparent, debuggable systems—helping you build correct APIs faster and with confidence.

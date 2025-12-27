@@ -1,3 +1,130 @@
 ---
 title: "Workflows"
+description: "Learn how workflows work in DotPortion and how APIs are built, executed, and managed using visual nodes."
 ---
+
+# Workflows
+
+A **workflow** is the core building block in DotPortion.\
+It represents **how an API request is processed from start to finish** using connected nodes.
+
+Instead of writing code, you design the flow visually — each node performs a single responsibility, and data flows between them automatically.
+
+---
+
+## What Is a Workflow?
+
+In DotPortion, a workflow is:
+
+- A **request-driven execution graph**
+- Triggered by an incoming HTTP request
+- Composed of connected nodes
+- Executed step-by-step in a deterministic order
+- Deployed as a live API endpoint
+
+If you’ve used backend frameworks before, think of a workflow as a **controller + service + middleware pipeline**, but visual.
+
+---
+
+## Workflow Structure
+
+Every workflow follows the same high-level structure:
+
+1. **API Start Node**\
+   Defines the HTTP method and path
+2. **Processing Nodes**\
+   Handle validation, logic, database access, authentication, etc.
+3. **Response Node**\
+   Returns the final HTTP response
+
+---
+
+## Example Workflow
+
+**Use case:** Create a user
+
+```text
+API Start (POST /users)
+   ↓
+Parameter Validation
+   ↓
+Logic (sanitize input)
+   ↓
+Database Insert
+   ↓
+Response (201 Created)
+```
+
+Each step is explicit, inspectable, and debuggable.
+
+---
+
+## How Workflows Execute
+
+When a request hits a deployed workflow:
+
+1. DotPortion matches the **method and path**
+2. Execution starts at the **API Start Node**
+3. Nodes run **in the order they are connected**
+4. Each node receives:
+   - Input from the request
+   - Output from previous nodes
+5. Execution stops when a **Response Node** is reached
+
+If any node fails, execution stops immediately and an error is returned.
+
+---
+
+## Data Flow Between Nodes
+
+Data is passed between nodes as **structured JSON**.
+
+Each node:
+
+- Receives input
+- Produces output
+- Exposes its output to downstream nodes
+
+You can reference previous node outputs dynamically when configuring later nodes.
+
+---
+
+## Visual Debugging
+
+DotPortion provides built-in debugging tools:
+
+- Step-by-step execution logs
+- Node-level input and output inspection
+- Clear error messages when execution fails
+
+This makes workflows easy to debug without adding logging code.
+
+## Deployment Model
+
+Workflows are deployed as **live APIs**.
+
+- One-click deployment
+- Stable endpoint URLs
+- Zero infrastructure setup
+- Changes require redeployment to take effect
+
+---
+
+## Best Practices
+
+- Keep workflows focused on a single responsibility
+- Prefer small, composable workflows
+- Validate inputs early
+- Handle errors explicitly
+- Use versioning instead of modifying production workflows directly
+
+---
+
+## When to Use Multiple Workflows
+
+Use separate workflows when:
+
+- Endpoints have different responsibilities
+- Auth rules differ
+- Response formats differ
+- You want independent versioning

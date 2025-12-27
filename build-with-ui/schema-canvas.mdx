@@ -1,3 +1,250 @@
 ---
 title: "Schema Canvas"
+description: "Design and manage database schemas visually for Platform Database or MongoDB using the Schema Canvas."
 ---
+
+# Schema Canvas
+
+The **Schema Canvas** allows you to **design database schemas visually** in DotPortion—without writing database migration code.
+
+It provides a **GUI-based schema builder**, similar to tools like MongoDB Compass or ORM schema designers, but tightly integrated with workflows and database operations.
+
+---
+
+## What Is the Schema Canvas?
+
+The Schema Canvas is a visual editor where you can:
+
+- Select a database (Platform DB or MongoDB)
+- Create and manage collections
+- Define fields and their constraints
+- Maintain a clear data structure for your project
+
+Schemas created here act as the **single source of truth** for your data model.
+
+---
+
+## Supported Database Types
+
+When opening the Schema Canvas, you can choose between:
+
+### Platform Database
+
+- Managed by DotPortion
+- No external credentials required
+- Best for quick setup and internal tooling
+
+### MongoDB Database
+
+- Connects via MongoDB URL secret
+- Works with your existing MongoDB clusters
+- Full compatibility with MongoDB collections
+
+Both options provide the **same schema design experience**.
+
+---
+
+## Schema Canvas UI
+
+> 🧩 **Schema Canvas (UI Reference)**
+
+![Schema Canvas Placeholder](/images/schema/schema-canvas.png)
+
+The canvas displays:
+
+- Selected database
+- List of collections
+- Fields inside each collection
+- Field-level configuration options
+
+---
+
+## Creating a Collection
+
+To create a new collection:
+
+1. Select the database
+2. Click **Add Collection**
+3. Provide a collection name
+4. Start defining fields
+
+Each collection represents a logical data entity (e.g. `users`, `orders`, `products`).
+
+---
+
+## Adding Fields
+
+> 🧱 **Field Configuration Panel (UI Reference)**
+
+![Field Configuration Placeholder](/images/schema/field-config.png)
+
+Each field in a collection can be configured with the following options:
+
+---
+
+## Field Options Explained
+
+### Field Name
+
+**Purpose:**\
+The key name used to store data in the document.
+
+**Example:**
+
+```text
+email
+```
+
+Field names should be:
+
+- Lowercase
+- Descriptive
+- Consistent across collections
+
+---
+
+### Type
+
+**Purpose:**\
+Defines the data type of the field.
+
+**Common types include:**
+
+- String
+- Number
+- Boolean
+- Date
+- Object
+- Array
+
+The selected type helps ensure data consistency.
+
+---
+
+### Required
+
+**Purpose:**\
+Marks the field as mandatory.
+
+- Enabled → field must be present
+- Disabled → field is optional
+
+This helps prevent incomplete records.
+
+---
+
+### Unique
+
+**Purpose:**\
+Ensures the field value is unique across the collection.
+
+**Common use cases:**
+
+- Email
+- Username
+- External IDs
+
+This creates a uniqueness constraint at the database level.
+
+---
+
+### Index
+
+**Purpose:**\
+Creates an index on the field for faster queries.
+
+Indexes improve performance for:
+
+- Frequent lookups
+- Filtering
+- Sorting
+
+⚠️ Use indexes thoughtfully to avoid unnecessary overhead.
+
+---
+
+### Default Value
+
+**Purpose:**\
+Sets a default value when no value is provided.
+
+**Examples:**
+
+```
+true
+```
+
+```
+CURRENT_TIMESTAMP
+```
+
+This is useful for flags, timestamps, and status fields.
+
+---
+
+### Description
+
+**Purpose:**\
+Adds documentation for the field.
+
+Descriptions help:
+
+- Team members understand data intent
+- Future maintenance
+- Auto-generated docs
+
+Descriptions do not affect runtime behavior.
+
+---
+
+## Visual Schema Editing Benefits
+
+Using the Schema Canvas:
+
+- Reduces schema errors
+- Improves team collaboration
+- Makes data models self-documenting
+- Aligns workflows with database structure
+
+---
+
+## Relationship with Workflows
+
+- Database Nodes respect schema definitions
+- Field constraints guide workflow data shape
+- Schema updates reflect immediately in DB operations
+- Helps catch invalid data early
+
+---
+
+## Best Practices
+
+- Design schemas before building workflows
+- Use `required` and `unique` constraints wisely
+- Add descriptions for clarity
+- Index fields used in queries
+- Keep schemas simple and intentional
+
+---
+
+## Important Notes
+
+- Schema changes affect live data
+- Existing documents are not auto-migrated
+- Deleting fields does not delete data automatically
+- Always test schema changes in non-production environments
+
+---
+
+## Summary
+
+| Feature              | Supported |
+| :------------------- | :-------- |
+| Visual schema design | Yes       |
+| Platform Database    | Yes       |
+| MongoDB Database     | Yes       |
+| Field constraints    | Yes       |
+| Indexing             | Yes       |
+| Documentation        | Yes       |
+
+The Schema Canvas helps you **design reliable data models visually**, keeping your database, workflows, and APIs aligned.

@@ -1,3 +1,208 @@
 ---
-title: "Nodes"
+title: "Nodes Overview"
+description: "Learn about all available nodes in DotPortion and how each node fits into building workflows."
+keywords: ["DotPortion nodes","workflow nodes","no-code backend nodes","API builder nodes"]
 ---
+
+# Nodes Overview
+
+Nodes are the **building blocks** of every workflow in DotPortion.
+
+Each node performs a **single, focused responsibility**, and workflows are created by connecting nodes together in sequence.\
+This approach makes backend logic **visual, predictable, and easy to maintain**.
+
+This page gives you a **high-level overview of all nodes** available in DotPortion.\
+Click on any node to view its **detailed documentation**.
+
+---
+
+## How Nodes Work Together
+
+A typical workflow looks like this:
+
+```
+
+API Start → Request Parameters → Logic → Database → API Response
+
+```
+
+- Execution flows **top to bottom**
+- Data flows **between nodes**
+- The workflow ends when an **API Response Node** is executed
+
+---
+
+## Core Nodes
+
+### 🔹 API Start Node
+**Entry point of every workflow**
+
+Defines how an HTTP request enters DotPortion.
+
+- HTTP Method
+- URL Path
+- Request entry
+
+👉 [Read API Start Node docs](/docs/nodes/api-start)
+
+---
+
+### 🔹 API Response Node
+**Ends the workflow and sends the response**
+
+Controls the final HTTP status and response body.
+
+- Status codes
+- Response output
+- Terminates execution
+
+👉 [Read API Response Node docs](/docs/nodes/api-response)
+
+---
+
+## Input & Validation Nodes
+
+### 🔹 Request Parameters Node
+**Extract and validate incoming request data**
+
+Used to define what input your API expects.
+
+- Body
+- Query
+- Headers
+- Path params
+
+👉 [Read Request Parameters Node docs](/docs/nodes/request-parameters)
+
+---
+
+## Logic & Flow Control Nodes
+
+### 🔹 Condition Node
+**Control execution using conditions**
+
+Allows workflows to branch based on JavaScript expressions.
+
+- Boolean conditions
+- Access dynamic values
+- Guard logic
+
+👉 [Read Condition Node docs](/docs/nodes/condition)
+
+---
+
+### 🔹 Logic Node
+**Write custom JavaScript / TypeScript**
+
+Used when visual configuration is not enough.
+
+- Transform data
+- Perform calculations
+- Build objects
+
+👉 [Read Logic Node docs](/docs/nodes/logic)
+
+---
+
+### 🔹 Loop Node
+**Iterate over lists**
+
+Executes connected nodes for each item in an array.
+
+- Sequential execution
+- Access current item
+- Bulk operations
+
+👉 [Read Loop Node docs](/docs/nodes/loop)
+
+---
+
+## Authentication & Security Nodes
+
+### 🔹 JWT Generate Node
+**Generate JSON Web Tokens**
+
+Used for authentication and session handling.
+
+- Custom payload
+- Token expiration
+- Platform-managed secret
+
+👉 [Read JWT Generate Node docs](/docs/nodes/jwt-generate)
+
+---
+
+### 🔹 JWT Verify Node
+**Verify and decode JWTs**
+
+Protects APIs by validating tokens.
+
+- Signature verification
+- Expiration checks
+- Payload decoding
+
+👉 [Read JWT Verify Node docs](/docs/nodes/jwt-verify)
+
+---
+
+## Database Nodes
+
+### 🔹 Database Node (Managed)
+**DotPortion’s built-in database**
+
+No setup required. Ideal for MVPs and rapid development.
+
+- CRUD operations
+- Managed MongoDB
+- Project-scoped data
+
+👉 [Read Database Node docs](/docs/nodes/database)
+
+---
+
+### 🔹 MongoDB Node (External)
+**Connect your own MongoDB database**
+
+Used when working with existing or external databases.
+
+- Requires MongoDB connection URL
+- Full CRUD support
+- External data access
+
+👉 [Read MongoDB Node docs](/docs/nodes/mongodb)
+
+---
+
+## Choosing the Right Nodes
+
+| Goal | Recommended Nodes |
+|----|------------------|
+| Build an API | API Start → Response |
+| Validate input | Request Parameters |
+| Apply logic | Condition / Logic |
+| Process arrays | Loop |
+| Store data | Database / MongoDB |
+| Secure APIs | JWT Verify |
+| Generate tokens | JWT Generate |
+
+---
+
+## Best Practices
+
+- Start every workflow with **API Start**
+- End every API workflow with **API Response**
+- Validate inputs early
+- Keep logic nodes focused
+- Prefer managed Database Node for quick builds
+- Use MongoDB Node for existing databases
+
+---
+
+## What’s Next?
+
+- Learn how each node works in detail
+- Build complete API examples
+- Combine nodes to create real-world workflows
+
+➡️ Start by reading the **API Start Node** documentation.
+```

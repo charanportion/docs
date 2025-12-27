@@ -1,3 +1,198 @@
 ---
 title: "Rate Limiter"
+description: "Control how many requests can be made to your DotPortion APIs to protect them from abuse and traffic spikes."
 ---
+
+# Rate Limiter
+
+The **Rate Limiter** helps protect your APIs from abuse, accidental overload, and traffic spikes by limiting how many requests a client can make within a given time window.
+
+Rate limiting is configured **at the project level** and applies to all deployed workflows in the project.
+
+---
+
+## What Is Rate Limiting?
+
+Rate limiting enforces a rule like:
+
+> “Allow **N requests** per **time window** from a client.”
+
+If a client exceeds the limit, DotPortion automatically blocks further requests until the window resets.
+
+This helps:
+
+- Prevent abuse and DDoS-style traffic
+- Protect backend resources
+- Ensure fair usage across clients
+
+---
+
+## Configuration UI
+
+> 📷 **Rate Limiter Configuration Form**
+
+![Rate Limiter Configuration Form](/images/settings/rate-limiter-form.png)
+
+---
+
+## Enable / Disable Rate Limiting
+
+### Rate Limiting Toggle
+
+- **Disabled** (default):\
+  No request limits are enforced.
+- **Enabled**:\
+  Requests exceeding the configured limits will be rejected.
+
+💡 Enable rate limiting for **all public APIs**.
+
+---
+
+## Configuration Fields
+
+### Window (ms)
+
+**Purpose:**\
+Defines the time window (in milliseconds) during which requests are counted.
+
+**Example:**
+
+```text
+900000
+```
+
+This equals **15 minutes**.
+
+**Common values:**
+
+| Window     | Milliseconds |
+| :--------- | :----------- |
+| 1 minute   | 60000        |
+| 5 minutes  | 300000       |
+| 15 minutes | 900000       |
+| 1 hour     | 3600000      |
+
+---
+
+### Max Requests
+
+**Purpose:**\
+Defines the maximum number of requests allowed within the time window.
+
+**Example:**
+
+```
+100
+```
+
+This allows **100 requests per 15 minutes per client**.
+
+---
+
+### Message
+
+**Purpose:**\
+Custom message returned when the rate limit is exceeded.
+
+**Example:**
+
+```
+Too many requests, please try again later.
+```
+
+This message is returned with an HTTP **429 Too Many Requests** response.
+
+---
+
+### Standard Headers
+
+**Purpose:**\
+Enables modern, standardized rate limit headers.
+
+When enabled, responses include headers such as:
+
+```
+RateLimit-Limit
+RateLimit-Remaining
+RateLimit-Reset
+```
+
+✅ Recommended for new applications.
+
+---
+
+### Legacy Headers
+
+**Purpose:**\
+Enables legacy `X-RateLimit-*` headers for backward compatibility.
+
+**Example headers:**
+
+```
+X-RateLimit-Limit
+X-RateLimit-Remaining
+X-RateLimit-Reset
+```
+
+⚠️ Use only if required by older clients.
+
+---
+
+## How Rate Limiting Works in DotPortion
+
+When enabled:
+
+1. Each incoming request is counted per client
+2. If the limit is not exceeded, the request proceeds
+3. If the limit is exceeded:
+   - The request is blocked
+   - HTTP `429` is returned
+   - Custom message is sent
+4. Limits reset after the window expires
+
+---
+
+## Example Configurations
+
+### Public API (Moderate Traffic)
+
+```
+Window: 900000
+Max Requests: 100
+Standard Headers: Enabled
+```
+
+### Internal Dashboard API
+
+```
+Window: 60000
+Max Requests: 500
+Standard Headers: Enabled
+```
+
+### High-Security Endpoint
+
+```
+Window: 60000
+Max Requests: 20
+Standard Headers: Enabled
+```
+
+---
+
+## Best Practices
+
+- Always enable rate limiting on public APIs
+- Use smaller windows for sensitive endpoints
+- Avoid extremely high limits
+- Use Standard Headers for observability
+- Combine rate limiting with authentication
+
+---
+
+## Important Notes
+
+- Rate limits apply **across all workflows** in the project
+- Changes require saving the configuration
+- Misconfigured limits may block legitimate users
+- Rate limiting is enforced before workflow execution

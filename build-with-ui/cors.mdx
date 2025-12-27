@@ -1,3 +1,161 @@
 ---
-title: "Cors"
+title: "CORS Configuration"
+description: "Configure Cross-Origin Resource Sharing (CORS) settings for your DotPortion APIs."
 ---
+
+# CORS Configuration
+
+CORS (Cross-Origin Resource Sharing) controls **which websites are allowed to call your APIs from a browser**.
+
+In DotPortion, CORS is configured **at the project level** and applies to all deployed workflows within the project.
+
+---
+
+## What Is CORS?
+
+Browsers enforce a security rule called the **Same-Origin Policy**, which blocks frontend applications from calling APIs hosted on a different domain unless explicitly allowed.
+
+CORS lets your API say:
+
+> “These origins, methods, and headers are allowed to access me from a browser.”
+
+⚠️ **CORS only affects browser-based requests**\
+It does **not** apply to:
+
+- Server-to-server calls
+- Mobile apps
+- Backend scripts
+
+---
+
+## Configuration UI
+
+> 📷 **CORS Configuration Form**
+
+![CORS Configuration Form](/images/settings/cors-form.png)
+
+This form allows you to enable or disable CORS and define exactly what is allowed.
+
+---
+
+## Enable / Disable CORS
+
+### CORS Toggle
+
+- **Disabled** (default):\
+  No CORS headers are sent. Browser-based apps will be blocked.
+- **Enabled**:\
+  DotPortion adds appropriate CORS headers to API responses.
+
+💡 Enable CORS only if your API is consumed directly from a browser.
+
+---
+
+## Configuration Fields
+
+### Allowed Origins
+
+**Purpose:**\
+Defines which domains are allowed to call your API from a browser.
+
+**Format:**\
+Comma-separated list of origins.
+
+**Examples:**
+
+```text
+https://example.com
+```
+
+```text
+https://app.example.com, https://admin.example.com
+```
+
+```text
+*
+```
+
+#### Notes
+
+- `*` allows **any origin** (not recommended for production)
+- Origins must include protocol (`https://`)
+- Wildcards should be used cautiously
+
+### Allowed Methods
+
+**Purpose:**\
+Specifies which HTTP methods are allowed for cross-origin requests.
+
+**Example:**
+
+```
+GET, POST, PUT, DELETE
+```
+
+Only these methods will be accepted during browser preflight checks.
+
+### Allowed Headers
+
+**Purpose:**\
+Defines which request headers the browser is allowed to send.
+
+**Common examples:**
+
+```
+Content-Type, Authorization
+```
+
+Add custom headers here if your frontend sends them.
+
+## How CORS Works in DotPortion
+
+When CORS is enabled:
+
+1. Browser sends a **preflight (OPTIONS)** request
+2. DotPortion validates:
+   - Origin
+   - Method
+   - Headers
+3. If allowed, proper CORS headers are returned
+4. Browser allows the actual request
+
+This process is handled automatically by DotPortion.
+
+## Example Use Cases
+
+### Public Frontend App
+
+```
+Allowed Origins: https://app.myproduct.com
+Allowed Methods: GET, POST
+Allowed Headers: Content-Type, Authorization
+```
+
+### Local Development
+
+```
+Allowed Origins: http://localhost:3000
+Allowed Methods: GET, POST, PUT, DELETE
+Allowed Headers: Content-Type, Authorization
+```
+
+---
+
+## Security Best Practices
+
+- Avoid using `*` in production
+- Restrict origins to known domains
+- Allow only required methods
+- Keep headers minimal
+- Use authentication in addition to CORS
+
+CORS is **not an authentication mechanism** — it only controls browser access.
+
+---
+
+## Important Notes
+
+- Changes to CORS settings require saving the configuration
+- Updates apply to all deployed workflows
+- Misconfigured CORS may cause browser errors like:
+  - `CORS policy: No 'Access-Control-Allow-Origin' header`
