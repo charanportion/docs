@@ -81,7 +81,7 @@
       "group": "Todo",
       "expanded": true,
       "pages": [
-        "examples/todo",
+        "examples/Todo",
         {
           "group": "Setup",
           "pages": [
