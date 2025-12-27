@@ -78,15 +78,28 @@
         "tab": "Examples",
         "groups": [
           {
-            "group": "Todo",
-            "pages": [
-              "examples/Todo/create-todo",
-              "examples/Todo/get-todo",
-              "examples/Todo/get-todos",
-              "examples/Todo/update-todo",
-              "examples/Todo/delete-todo"
-            ]
-          },
+      "group": "Todo",
+      "groups": [
+        {
+          "group": "Setup",
+          "pages": [
+            "examples/todo/setup/project",
+            "examples/todo/setup/secrets",
+            "examples/todo/setup/schema"
+          ]
+        },
+        {
+          "group": "APIs",
+          "pages": [
+            "examples/todo/apis/create-todo",
+            "examples/todo/apis/update-todo",
+            "examples/todo/apis/get-todo",
+            "examples/todo/apis/get-todos",
+            "examples/todo/apis/delete-todo"
+          ]
+        }
+      ]
+    },
           {
             "group": "Authentication",
             "pages": [
