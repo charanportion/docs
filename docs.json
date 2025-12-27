@@ -4,8 +4,8 @@
   "name": "Dotportion Docs",
   "colors": {
     "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "light": "#000000",
+    "dark": "#111111"
   },
   "favicon": "/favicon.svg",
   "navigation": {
