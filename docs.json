@@ -85,19 +85,19 @@
         {
           "group": "Setup",
           "pages": [
-            "examples/todo/setup/project",
-            "examples/todo/setup/secrets",
-            "examples/todo/setup/schema"
+            "examples/Todo/setup/project",
+            "examples/Todo/setup/secrets",
+            "examples/Todo/setup/schema"
           ]
         },
         {
           "group": "APIs",
           "pages": [
-            "examples/todo/apis/create-todo",
-            "examples/todo/apis/update-todo",
-            "examples/todo/apis/get-todo",
-            "examples/todo/apis/get-todos",
-            "examples/todo/apis/delete-todo"
+            "examples/Todo/apis/create-todo",
+            "examples/Todo/apis/update-todo",
+            "examples/Todo/apis/get-todo",
+            "examples/Todo/apis/get-todos",
+            "examples/Todo/apis/delete-todo"
           ]
         }
       ]
