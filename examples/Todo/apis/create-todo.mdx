@@ -1,3 +1,195 @@
 ---
-title: "Create Todo"
+title: "Create Todo Workflow"
+description: "Step-by-step guide to building a Create Todo API using DotPortion’s visual workflow builder."
 ---
+
+# Create Todo Workflow
+
+This guide shows how to build a **Create Todo API** using DotPortion’s **visual workflow builder**.
+
+You will create a workflow that:
+
+- Accepts todo data from an HTTP request
+- Processes and enriches the data
+- Stores it in the database
+- Returns a success response
+
+No backend code required.
+
+---
+
+## What We’re Building
+
+**Endpoint:**
+
+```http
+POST /todos
+```
+
+**Purpose:**\
+Create a new todo item and store it in the database.
+
+---
+
+## Before You Start
+
+Make sure you have:
+
+- Created the **Todo Project**
+- Defined the **Todo Schema**
+- Selected a database (Platform DB or MongoDB)
+
+---
+
+## Step 1: Create a New Workflow
+
+1. Open your project
+2. Click **New Workflow**
+3. Name it: `create-todo`
+
+> 🖼️ **Workflow Creation (UI Reference)**
+
+---
+
+## Step 2: Configure API Start Node
+
+Select the **API Start Node** and configure:
+
+- **Method:** `POST`
+- **Path:** `/todos`
+
+This defines the public API endpoint for the workflow.
+
+> 🖼️ **API Start Node Configuration**
+
+---
+
+## Step 3: Add Parameter Node
+
+Add a **Parameter Node** to extract request body values.
+
+Configure the following fields:
+
+| Field       | Type   | Required |
+| :---------- | :----- | :------- |
+| title       | String | Yes      |
+| description | String | No       |
+
+This ensures only valid input enters the workflow.
+
+> 🖼️ **Parameter Node Configuration**
+
+---
+
+## Step 4: Add Logic Node
+
+Add a **Logic Node** to enrich the todo data before saving.
+
+Configure logic to:
+
+- Set `completed` to `false`
+- Set `createdAt` to current time
+- Set `updatedAt` to current time
+
+This keeps data consistent and avoids relying on client-side values.
+
+> 🖼️ **Logic Node Configuration**
+
+---
+
+## Step 5: Add Database Node
+
+Add a **Database Node** to store the todo.
+
+Configure:
+
+- **Database:** Platform DB or MongoDB
+- **Collection:** `todos`
+- **Operation:** `insertOne`
+- **Data:** Output from Logic Node
+
+This inserts a new document into the database.
+
+> 🖼️ **Database Node Configuration**
+
+---
+
+## Step 6: Add Response Node
+
+Add a **Response Node** to return a success response.
+
+Configure:
+
+- **Status Code:** `201`
+- **Response Body:**
+
+```
+{
+  "success": true,
+  "todoId": "{{insertedId}}"
+}
+```
+
+This confirms successful creation.
+
+> 🖼️ **Response Node Configuration**
+
+---
+
+## Step 7: Connect the Nodes
+
+Connect the nodes in this order:
+
+```
+API Start → Parameter → Logic → Database → Response
+```
+
+> 🖼️ **Final Workflow Graph**
+
+---
+
+## Step 8: Deploy the Workflow
+
+Click **Deploy** to make the API live.
+
+Once deployed, the API becomes available immediately.
+
+---
+
+## Testing the Workflow
+
+Use the **Realtime Executor** to:
+
+- Send a test request
+- Watch node-by-node execution
+- Verify data insertion
+- Debug errors if any
+
+> 🖼️ **Realtime Executor View**
+
+---
+
+## What Happens on Each Request
+
+1. Request hits `/todos`
+2. Parameters are validated
+3. Data is enriched
+4. Todo is saved
+5. Response is returned
+
+---
+
+## Best Practices
+
+- Validate inputs early
+- Never trust client-side values
+- Keep logic minimal and explicit
+- Use schema defaults where possible
+
+---
+
+## Summary
+
+You’ve successfully built a **Create Todo API** using DotPortion’s visual workflow builder.
+
+No servers, no boilerplate—just clean, visual API logic.

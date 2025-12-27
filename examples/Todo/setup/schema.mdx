@@ -1,3 +1,107 @@
 ---
-title: "Schema"
+title: "Todo Schema"
+description: "Database schema for the Todo App example using Schema Canvas."
 ---
+
+# Todo Schema
+
+The Todo app stores its data in a single collection called `todos`.
+
+This schema is created using the **Schema Canvas**.
+
+---
+
+## Database Selection
+
+Choose one:
+
+- ✅ Platform Database (recommended)
+- MongoDB Database (requires MongoDB URL secret)
+
+---
+
+## Collection: `todos`
+
+Create a new collection named:
+
+```text
+todos
+```
+
+## Fields
+
+### 1️⃣ title
+
+| Option      | Value             |
+| :---------- | :---------------- |
+| Type        | String            |
+| Required    | Yes               |
+| Unique      | No                |
+| Index       | Yes               |
+| Default     | —                 |
+| Description | Title of the todo |
+
+---
+
+### 2️⃣ description
+
+| Option      | Value            |
+| :---------- | :--------------- |
+| Type        | String           |
+| Required    | No               |
+| Unique      | No               |
+| Index       | No               |
+| Default     | —                |
+| Description | Optional details |
+
+---
+
+### 3️⃣ completed
+
+| Option      | Value             |
+| :---------- | :---------------- |
+| Type        | Boolean           |
+| Required    | Yes               |
+| Unique      | No                |
+| Index       | Yes               |
+| Default     | false             |
+| Description | Completion status |
+
+---
+
+### 4️⃣ createdAt
+
+| Option      | Value             |
+| :---------- | :---------------- |
+| Type        | Date              |
+| Required    | Yes               |
+| Unique      | No                |
+| Index       | Yes               |
+| Default     | now()             |
+| Description | Created timestamp |
+
+---
+
+### 5️⃣ updatedAt
+
+| Option      | Value                  |
+| :---------- | :--------------------- |
+| Type        | Date                   |
+| Required    | Yes                    |
+| Unique      | No                     |
+| Index       | No                     |
+| Default     | now()                  |
+| Description | Last updated timestamp |
+
+---
+
+## Why This Schema Works Well
+
+- Simple and clear
+- Indexed for common queries
+- Works for all CRUD operations
+- Easy to extend later (users, priority, due dates)
+
+---
+
+With the schema ready, you can now build **Todo workflows** (Create, Read, Update, Delete).

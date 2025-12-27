@@ -1,3 +1,135 @@
 ---
-title: "Get Todos"
+title: "Get Todos Workflow"
+description: "Step-by-step guide to building a Get All Todos API using DotPortion’s visual workflow builder."
 ---
+
+# Get Todos Workflow
+
+This guide shows how to build a **Get Todos API** that retrieves **all todo items** from the database using DotPortion’s visual workflow builder.
+
+This workflow:
+
+- Uses **no path params**
+- Uses **no query params**
+- Uses **no request body**
+
+---
+
+## What We’re Building
+
+**Endpoint:**
+
+```http
+GET /todos
+```
+
+**Purpose:**\
+Fetch all todo items stored in the database.
+
+---
+
+## Before You Start
+
+Make sure you have:
+
+- Created the **Todo Project**
+- Defined the **Todo Schema**
+- Inserted at least one todo
+- Selected a database (Platform DB or MongoDB)
+
+---
+
+## Step 1: Create a New Workflow
+
+1. Open your project
+2. Click **New Workflow**
+3. Name it: `get-todos`
+
+> 🖼️ **Workflow Creation (UI Reference)**
+
+---
+
+## Step 2: Configure API Start Node
+
+Select the **API Start Node** and configure:
+
+- **Method:** `GET`
+- **Path:** `/todos`
+
+This endpoint does not expect any input.
+
+> 🖼️ **API Start Node Configuration**
+
+---
+
+## Step 3: Add Database Node
+
+Add a **Database Node** to retrieve all todos.
+
+Configure:
+
+- **Database:** Platform DB or MongoDB
+- **Collection:** `todos`
+- **Operation:** `find`
+- **Filter:** `{}` (empty)
+
+This fetches all documents from the `todos` collection.
+
+> 🖼️ **Database Find Configuration**
+
+---
+
+## Step 4: Add Response Node
+
+Add a **Response Node** to return the list of todos.
+
+Configure:
+
+- **Status Code:** `200`
+- **Response Body:**
+
+```
+{
+  "todos": "{{documents}}"
+}
+```
+
+> 🖼️ **Response Node Configuration**
+
+---
+
+## Step 5: Connect the Nodes
+
+Connect the nodes in this order:
+
+```
+API Start → Database → Response
+```
+
+> 🖼️ **Final Workflow Graph**
+
+---
+
+## Step 6: Deploy the Workflow
+
+Click **Deploy** to make the API live.
+
+Once deployed, the endpoint is immediately accessible.
+
+---
+
+## Testing the Workflow
+
+Call the API using:
+
+```
+GET /todos
+```
+
+Use the **Realtime Executor** to:
+
+- Trigger the workflow
+- Watch the database query execute
+- Inspect the returned list of todos
+
+> 🖼️ **Realtime Executor View**

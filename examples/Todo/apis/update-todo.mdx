@@ -1,3 +1,199 @@
 ---
-title: "Update Todo"
+title: "Update Todo Workflow"
+description: "Step-by-step guide to updating a todo using request body in DotPortion’s visual workflow builder."
 ---
+
+# Update Todo Workflow
+
+This guide shows how to build an **Update Todo API** using DotPortion’s **visual workflow builder**, where the todo is updated **based on data sent in the request body**.
+
+This workflow:
+
+- Uses **request body only**
+- Does **not** use path params
+- Does **not** use query params
+
+---
+
+## What We’re Building
+
+**Endpoint:**
+
+```http
+PUT /todo
+```
+
+**Purpose:**\
+Update an existing todo by providing its ID and updated fields in the request body.
+
+---
+
+## Request Body Shape
+
+```
+{
+  "id": "todo_id_here",
+  "title": "Updated title",
+  "description": "Updated description",
+  "completed": true
+}
+```
+
+Only the fields you send will be updated.
+
+---
+
+## Before You Start
+
+Make sure you have:
+
+- Created the **Todo Project**
+- Defined the **Todo Schema**
+- Inserted at least one todo
+- Built the **Create Todo** workflow
+- Selected a database (Platform DB or MongoDB)
+
+---
+
+## Step 1: Create a New Workflow
+
+1. Open your project
+2. Click **New Workflow**
+3. Name it: `update-todo`
+
+> 🖼️ **Workflow Creation (UI Reference)**
+
+---
+
+## Step 2: Configure API Start Node
+
+Select the **API Start Node** and configure:
+
+- **Method:** `PUT`
+- **Path:** `/todo`
+
+This endpoint expects update data in the request body.
+
+> 🖼️ **API Start Node Configuration**
+
+---
+
+## Step 3: Add Parameter Node (Body)
+
+Add a **Parameter Node** to extract values from the **request body**.
+
+Configure the fields:
+
+| Field       | Source | Type    | Required |
+| :---------- | :----- | :------ | :------- |
+| id          | Body   | String  | Yes      |
+| title       | Body   | String  | No       |
+| description | Body   | String  | No       |
+| completed   | Body   | Boolean | No       |
+
+This allows partial updates.
+
+> 🖼️ **Parameter Node Configuration**
+
+---
+
+## Step 4: Add Logic Node
+
+Add a **Logic Node** to prepare the update payload.
+
+Logic responsibilities:
+
+- Build an update object using only provided fields
+- Set `updatedAt = now()`
+- Prevent overwriting fields with `null`
+
+This ensures clean updates.
+
+> 🖼️ **Logic Node Configuration**
+
+---
+
+## Step 5: Add Database Node
+
+Add a **Database Node** to update the todo.
+
+Configure:
+
+- **Database:** Platform DB or MongoDB
+- **Collection:** `todos`
+- **Operation:** `updateOne`
+- **Filter:**
+
+```
+{
+  "_id": "{{body.id}}"
+}
+```
+
+- **Update:**
+
+```
+{
+  "$set": "{{updatePayload}}"
+}
+```
+
+> 🖼️ **Database Update Configuration**
+
+---
+
+## Step 6: Add Response Node
+
+Add a **Response Node** to confirm success.
+
+Configure:
+
+- **Status Code:** `200`
+- **Response Body:**
+
+```
+{
+  "success": true
+}
+```
+
+> 🖼️ **Response Node Configuration**
+
+---
+
+## Step 7: Connect the Nodes
+
+Connect the nodes in this order:
+
+```
+API Start → Parameter (Body) → Logic → Database → Response
+```
+
+> 🖼️ **Final Workflow Graph**
+
+---
+
+## Step 8: Deploy the Workflow
+
+Click **Deploy** to make the API live.
+
+---
+
+## Testing the Workflow
+
+Send a request like:
+
+```
+{
+  "id": "65a91f3e12ab34cd5678ef90",
+  "completed": true
+}
+```
+
+Use the **Realtime Executor** to:
+
+- Observe body parsing
+- Inspect update payload
+- Verify database update
+
+> 🖼️ **Realtime Executor View**

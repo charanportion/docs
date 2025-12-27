@@ -1,3 +1,159 @@
 ---
-title: "Get Todo"
+title: "Get Todo Workflow"
+description: "Step-by-step guide to building a Get Todo API using query parameters in DotPortion’s visual workflow builder."
 ---
+
+# Get Todo Workflow
+
+This guide shows how to build a **Get Todo API** that fetches a **single todo item using a query parameter**, built entirely with DotPortion’s visual workflow builder.
+
+---
+
+## What We’re Building
+
+**Endpoint:**
+
+```http
+GET /todo
+```
+
+**Query Parameter:**
+
+```
+?id=<todoId>
+```
+
+**Purpose:**\
+Retrieve a single todo item by its ID using query parameters (not path params).
+
+---
+
+## Before You Start
+
+Make sure you have:
+
+- Created the **Todo Project**
+- Defined the **Todo Schema**
+- Inserted at least one todo
+- Selected a database (Platform DB or MongoDB)
+
+---
+
+## Step 1: Create a New Workflow
+
+1. Open your project
+2. Click **New Workflow**
+3. Name it: `get-todo`
+
+> 🖼️ **Workflow Creation (UI Reference)**
+
+---
+
+## Step 2: Configure API Start Node
+
+Select the **API Start Node** and configure:
+
+- **Method:** `GET`
+- **Path:** `/todo`
+
+This defines a query-based API instead of a path-based one.
+
+> 🖼️ **API Start Node Configuration**
+
+---
+
+## Step 3: Add Parameter Node (Query)
+
+Add a **Parameter Node** to extract values from the **query string**.
+
+Configure the field:
+
+| Field | Source | Type   | Required |
+| :---- | :----- | :----- | :------- |
+| id    | Query  | String | Yes      |
+
+This ensures the request includes a todo ID like:
+
+```
+/todo?id=65a91f3e12ab34cd5678ef90
+```
+
+> 🖼️ **Query Parameter Configuration**
+
+---
+
+## Step 4: Add Database Node
+
+Add a **Database Node** to fetch the todo.
+
+Configure:
+
+- **Database:** Platform DB or MongoDB
+- **Collection:** `todos`
+- **Operation:** `findOne`
+- **Filter:**
+
+```
+{
+  "_id": "{{query.id}}"
+}
+```
+
+This looks up the todo using the query value.
+
+> 🖼️ **Database Find Configuration**
+
+---
+
+## Step 5: Add Response Node
+
+Add a **Response Node** to return the todo data.
+
+Configure:
+
+- **Status Code:** `200`
+- **Response Body:**
+
+```
+{
+  "todo": "{{document}}"
+}
+```
+
+> 🖼️ **Response Node Configuration**
+
+---
+
+## Step 6: Connect the Nodes
+
+Connect the nodes in this order:
+
+```
+API Start → Parameter (Query) → Database → Response
+```
+
+> 🖼️ **Final Workflow Graph**
+
+---
+
+## Step 7: Deploy the Workflow
+
+Click **Deploy** to make the API live.
+
+---
+
+## Testing the Workflow
+
+Call the API using:
+
+```
+GET /todo?id=<todoId>
+```
+
+Use the **Realtime Executor** to:
+
+- Provide the query value
+- Watch database execution
+- Inspect returned data
+
+> 🖼️ **Realtime Executor View**
